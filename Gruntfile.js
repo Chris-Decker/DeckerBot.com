@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         partials: ['dev/partials/**/*.hbs'],
         prettify: { indent: 4 },
       },
-      dev: {
+      hbs: {
         files: [
           {
             // 'dev/': ['dev/**/*.hbs']
@@ -48,15 +48,13 @@ module.exports = function(grunt) {
       }
     },
     less: {
-      development: {
-        options: {
-          paths: ['dev/less/']
-        },
+      dev: {
+        options: {},
         files: {
-          'build/css/deckerbot.css': 'dev/less/deckerbot.less'
+          'build/css/template.css': 'dev/less/template.less'
         }
       },
-      production: {
+      dist: {
         options: {
           paths: ['assets/css'],
           plugins: [
@@ -69,7 +67,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          '/css/deckerbot.css': '/less/deckerbot.less'
+          '/css/**/*.css': '/less/**/*.less'
         }
       }
     },
@@ -85,24 +83,24 @@ module.exports = function(grunt) {
     watch: {
       hbs: {
         files: 'dev/**/*.hbs',
-        tasks: ['assemble'],
+        tasks: ['assemble:hbs'],
         options: {
           livereload: true
         },
       },
-      js: {
-        files: [
-          'dev/**/*.js',
-          'data.json'
-        ],
-        tasks: ['assemble'],
-        options: {
-          livereload: true
-        },
-      },
+      // js: {
+      //   files: [
+      //     'dev/**/*.js',
+      //     'data.json'
+      //   ],
+      //   tasks: [''],
+      //   options: {
+      //     livereload: true
+      //   },
+      // },
       less: {
         files: 'dev/**/*.less',
-        tasks: ['assemble'],
+        tasks: ['less:dev'],
         options: {
           livereload: true
         },

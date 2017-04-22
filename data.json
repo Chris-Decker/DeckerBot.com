@@ -1,4 +1,6 @@
 {
 	"test": "This text is fed from 'data.json'.",
+	"dev-path": "../dev/",
+	"build-path": "../dev/",
 	"site-path": "../dev/"
 }
